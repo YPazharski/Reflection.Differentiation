@@ -16,16 +16,23 @@ namespace Reflection.Differentiation
         /// </summary>
         public static Expression<Func<double, double>> Differentiate(Expression<Func<double, double>> expression)
         {
-            var body = expression.Body;
-            var nodeType = body.NodeType;
-            var nodeTypeName = nodeType.ToString();
-            var difFuncName = nameof(Differentiate) + nodeTypeName;
+            if (expression == null) throw new ArgumentNullException();
+            var difFuncName = GetDifFuncName(expression);
             var difFunc = typeof(Algebra).GetMethod(difFuncName, 
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
             if (difFunc is null)
                 throw new ArgumentNullException(difFuncName + " not supported");
             var result = difFunc.Invoke(null, new object[] {expression});
             return (Expression<Func<double, double>>)result;
+        }
+
+        static string GetDifFuncName(Expression<Func<double, double>> expression)
+        {
+            var body = expression.Body;
+            var nodeType = body.NodeType;
+            var nodeTypeName = nodeType.ToString();
+            var result = nameof(Differentiate) + nodeTypeName;
+            return result;
         }
 
         static Expression<Func<double, double>> DifferentiateConstant(Expression<Func<double, double>> expression)
