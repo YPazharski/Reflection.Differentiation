@@ -11,7 +11,12 @@ namespace Reflection.Differentiation
     {
         public static Expression<Func<double, double>> Differentiate(Expression<Func<double, double>> expression)
         {
-            throw new NotImplementedException();
+            var body = expression.Body;
+            var nodeType = body.NodeType;
+            Expression<Func<double, double>> result = null;
+            if (nodeType == ExpressionType.Constant)
+                result = x => 0;
+            return result;
         }
     }
 }
