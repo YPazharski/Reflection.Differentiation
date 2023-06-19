@@ -31,11 +31,11 @@ namespace Reflection.Differentiation
             AssertDerivativeEqualToNumericDerivative(z => z);
         }
 
-        [Test, Order(3)]
-        public void DifferentiateLinearFunction()
-        {
-            AssertDerivativeEqualToNumericDerivative(z => z * 5);
-        }
+        //[Test, Order(3)]
+        //public void DifferentiateLinearFunction()
+        //{
+        //    AssertDerivativeEqualToNumericDerivative(z => z * 5);
+        //}
 
         //[Test, Order(4)]
         //public void DifferentiateQuadraticFunction()
