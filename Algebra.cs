@@ -7,8 +7,13 @@ using System.Threading.Tasks;
 
 namespace Reflection.Differentiation
 {
+
     public static class Algebra
     {
+        /// <summary>
+        /// Add new private static method in Algebra class named "Differentiate" + ((operation name) or (Method name))
+        /// to support new operations.
+        /// </summary>
         public static Expression<Func<double, double>> Differentiate(Expression<Func<double, double>> expression)
         {
             var body = expression.Body;
@@ -18,7 +23,7 @@ namespace Reflection.Differentiation
             var difFunc = typeof(Algebra).GetMethod(difFuncName, 
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
             if (difFunc is null)
-                throw new ArgumentNullException(difFuncName + "not supported");
+                throw new ArgumentNullException(difFuncName + " not supported");
             var result = difFunc.Invoke(null, new object[] {expression});
             return (Expression<Func<double, double>>)result;
         }
