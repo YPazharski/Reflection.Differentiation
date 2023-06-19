@@ -19,80 +19,80 @@ namespace Reflection.Differentiation
             }
         }
 
-        //[Test]
-        //public void DifferentiateConstant()
-        //{
-        //    AssertDerivativeEqualToNumericDerivative(z => 42);
-        //}
+        [Test, Order(1)]
+        public void DifferentiateConstant()
+        {
+            AssertDerivativeEqualToNumericDerivative(z => 42);
+        }
 
-        [Test]
+        [Test, Order(2)]
         public void DifferentiateParameter()
         {
             AssertDerivativeEqualToNumericDerivative(z => z);
         }
 
-        //[Test]
-        //public void DifferentiateLinearFunction()
-        //{
-        //    AssertDerivativeEqualToNumericDerivative(z => z * 5);
-        //}
+        [Test, Order(3)]
+        public void DifferentiateLinearFunction()
+        {
+            AssertDerivativeEqualToNumericDerivative(z => z * 5);
+        }
 
-        //[Test]
+        //[Test, Order(4)]
         //public void DifferentiateQuadraticFunction()
         //{
         //    AssertDerivativeEqualToNumericDerivative(z => z * 5 * z);
         //}
 
-        //[Test]
+        //[Test, Order(5)]
         //public void DifferentiateSum()
         //{
         //    AssertDerivativeEqualToNumericDerivative(z => z + z);
         //}
 
-        //[Test]
+        //[Test, Order(6)]
         //public void DifferentiateSumAndProduct()
         //{
         //    AssertDerivativeEqualToNumericDerivative(z => 5 * z + z * z);
         //}
 
-        //[Test]
+        //[Test, Order(7)]
         //public void DifferentiateSin1()
         //{
         //    AssertDerivativeEqualToNumericDerivative(z => Math.Sin(z));
         //}
 
-        //[Test]
+        //[Test, Order(8)]
         //public void DifferentiateSin2()
         //{
         //    AssertDerivativeEqualToNumericDerivative(z => Math.Sin(z * z + z));
         //}
 
-        //[Test]
+        //[Test, Order(9)]
         //public void DifferentiateCos1()
         //{
         //    AssertDerivativeEqualToNumericDerivative(z => Math.Cos(z));
         //}
 
-        //[Test]
+        //[Test, Order(10)]
         //public void DifferentiateCos2()
         //{
         //    AssertDerivativeEqualToNumericDerivative(z => Math.Cos(z * z + z));
         //}
 
-        //[Test]
+        //[Test, Order(11)]
         //public void DifferentiateComplexExpression()
         //{
         //    AssertDerivativeEqualToNumericDerivative(z => Math.Cos(2 * z + z) + 2 * Math.Sin(3 * z + z) + Math.Sin(z + 1) * Math.Cos(z + 2) * 3);
         //}
 
-        //[Test]
+        //[Test, Order(12)]
         //public void InformativeMessage_OnNotSupportedSyntax()
         //{
         //    var ex = Assert.Throws<ArgumentException>(() => Algebra.Differentiate(z => z.ToString().Length));
         //    Assert.That(ex.Message, Does.Contain("ToString"));
         //}
 
-        //[Test]
+        //[Test, Order(13)]
         //public void InformativeMessage_OnUnknownFunction()
         //{
         //    var ex = Assert.Throws<ArgumentException>(() => Algebra.Differentiate(z => Math.Max(z, 2*z)));
