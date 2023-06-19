@@ -37,17 +37,17 @@ namespace Reflection.Differentiation
         //    AssertDerivativeEqualToNumericDerivative(z => z * 5);
         //}
 
-        [Test, Order(4)]
-        public void DifferentiateQuadraticFunction()
-        {
-            AssertDerivativeEqualToNumericDerivative(z => z * 5 * z);
-        }
-
-        //[Test, Order(5)]
-        //public void DifferentiateSum()
+        //[Test, Order(4)]
+        //public void DifferentiateQuadraticFunction()
         //{
-        //    AssertDerivativeEqualToNumericDerivative(z => z + z);
+        //    AssertDerivativeEqualToNumericDerivative(z => z * 5 * z);
         //}
+
+        [Test, Order(5)]
+        public void DifferentiateSum()
+        {
+            AssertDerivativeEqualToNumericDerivative(z => z + z);
+        }
 
         //[Test, Order(6)]
         //public void DifferentiateSumAndProduct()

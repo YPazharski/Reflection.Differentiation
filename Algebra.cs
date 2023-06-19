@@ -66,5 +66,18 @@ namespace Reflection.Differentiation
             var result = Expression.Lambda<Func<double, double>>(sum, expression.Parameters);
             return result;
         }
+
+        static Expression<Func<double, double>> DifferentiateAdd(Expression<Func<double, double>> expression)
+        {
+            //der(u + v) = der(u) + der(v)
+            var body = expression.Body as BinaryExpression;
+            var u = Expression.Lambda<Func<double, double>>(body.Left, expression.Parameters);
+            var v = Expression.Lambda<Func<double, double>>(body.Right, expression.Parameters);
+            var derU = Differentiate(u);
+            var derV = Differentiate(v);
+            var sum = Expression.Add(derU.Body, derV.Body);
+            var result = Expression.Lambda<Func<double, double>>(sum, expression.Parameters);
+            return result;
+        }
     }
 }
