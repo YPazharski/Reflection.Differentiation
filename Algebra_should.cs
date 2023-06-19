@@ -19,17 +19,17 @@ namespace Reflection.Differentiation
             }
         }
 
-        [Test, Order(1)]
-        public void DifferentiateConstant()
-        {
-            AssertDerivativeEqualToNumericDerivative(z => 42);
-        }
+        //[Test, Order(1)]
+        //public void DifferentiateConstant()
+        //{
+        //    AssertDerivativeEqualToNumericDerivative(z => 42);
+        //}
 
-        [Test, Order(2)]
-        public void DifferentiateParameter()
-        {
-            AssertDerivativeEqualToNumericDerivative(z => z);
-        }
+        //[Test, Order(2)]
+        //public void DifferentiateParameter()
+        //{
+        //    AssertDerivativeEqualToNumericDerivative(z => z);
+        //}
 
         //[Test, Order(3)]
         //public void DifferentiateLinearFunction()
@@ -37,11 +37,11 @@ namespace Reflection.Differentiation
         //    AssertDerivativeEqualToNumericDerivative(z => z * 5);
         //}
 
-        //[Test, Order(4)]
-        //public void DifferentiateQuadraticFunction()
-        //{
-        //    AssertDerivativeEqualToNumericDerivative(z => z * 5 * z);
-        //}
+        [Test, Order(4)]
+        public void DifferentiateQuadraticFunction()
+        {
+            AssertDerivativeEqualToNumericDerivative(z => z * 5 * z);
+        }
 
         //[Test, Order(5)]
         //public void DifferentiateSum()
