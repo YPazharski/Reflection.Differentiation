@@ -16,6 +16,8 @@ namespace Reflection.Differentiation
             Expression<Func<double, double>> result = null;
             if (nodeType == ExpressionType.Constant)
                 result = x => 0;
+            if (nodeType == ExpressionType.Parameter)
+                result = x => 1;  
             return result;
         }
     }

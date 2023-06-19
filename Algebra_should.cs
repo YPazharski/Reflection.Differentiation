@@ -19,17 +19,17 @@ namespace Reflection.Differentiation
             }
         }
 
-        [Test]
-        public void DifferentiateConstant()
-        {
-            AssertDerivativeEqualToNumericDerivative(z => 42);
-        }
-
         //[Test]
-        //public void DifferentiateParameter()
+        //public void DifferentiateConstant()
         //{
-        //    AssertDerivativeEqualToNumericDerivative(z => z);
+        //    AssertDerivativeEqualToNumericDerivative(z => 42);
         //}
+
+        [Test]
+        public void DifferentiateParameter()
+        {
+            AssertDerivativeEqualToNumericDerivative(z => z);
+        }
 
         //[Test]
         //public void DifferentiateLinearFunction()
