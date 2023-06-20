@@ -24,7 +24,8 @@ namespace Reflection.Differentiation
                     System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static 
                 );
             if (difFunc is null)
-                throw new ArgumentNullException(difFuncName + " not supported");
+                throw new ArgumentException(expression.ToString() + "is not supported! " +
+                    difFuncName + " method not found");
             var result = difFunc.Invoke(null, new object[] {expression});
             return (Expression<Func<double, double>>)result;
         }

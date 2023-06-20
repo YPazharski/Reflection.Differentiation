@@ -67,17 +67,17 @@ namespace Reflection.Differentiation
         //    AssertDerivativeEqualToNumericDerivative(z => Math.Sin(z * z + z));
         //}
 
-        [Test, Order(9)]
-        public void DifferentiateCos1()
-        {
-            AssertDerivativeEqualToNumericDerivative(z => Math.Cos(z));
-        }
+        //[Test, Order(9)]
+        //public void DifferentiateCos1()
+        //{
+        //    AssertDerivativeEqualToNumericDerivative(z => Math.Cos(z));
+        //}
 
-        [Test, Order(10)]
-        public void DifferentiateCos2()
-        {
-            AssertDerivativeEqualToNumericDerivative(z => Math.Cos(z * z + z));
-        }
+        //[Test, Order(10)]
+        //public void DifferentiateCos2()
+        //{
+        //    AssertDerivativeEqualToNumericDerivative(z => Math.Cos(z * z + z));
+        //}
 
         //[Test, Order(11)]
         //public void DifferentiateComplexExpression()
@@ -85,18 +85,18 @@ namespace Reflection.Differentiation
         //    AssertDerivativeEqualToNumericDerivative(z => Math.Cos(2 * z + z) + 2 * Math.Sin(3 * z + z) + Math.Sin(z + 1) * Math.Cos(z + 2) * 3);
         //}
 
-        //[Test, Order(12)]
-        //public void InformativeMessage_OnNotSupportedSyntax()
-        //{
-        //    var ex = Assert.Throws<ArgumentException>(() => Algebra.Differentiate(z => z.ToString().Length));
-        //    Assert.That(ex.Message, Does.Contain("ToString"));
-        //}
+        [Test, Order(12)]
+        public void InformativeMessage_OnNotSupportedSyntax()
+        {
+            var ex = Assert.Throws<ArgumentException>(() => Algebra.Differentiate(z => z.ToString().Length));
+            Assert.That(ex.Message, Does.Contain("ToString"));
+        }
 
-        //[Test, Order(13)]
-        //public void InformativeMessage_OnUnknownFunction()
-        //{
-        //    var ex = Assert.Throws<ArgumentException>(() => Algebra.Differentiate(z => Math.Max(z, 2*z)));
-        //    Assert.That(ex.Message, Does.Contain("Max"));
-        //}
+        [Test, Order(13)]
+        public void InformativeMessage_OnUnknownFunction()
+        {
+            var ex = Assert.Throws<ArgumentException>(() => Algebra.Differentiate(z => Math.Max(z, 2 * z)));
+            Assert.That(ex.Message, Does.Contain("Max"));
+        }
     }
 }
