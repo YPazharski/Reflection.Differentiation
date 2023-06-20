@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algebra.cs" />
+    <Compile Include="AlgebraAlt.cs" />
     <Compile Include="Algebra_should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />

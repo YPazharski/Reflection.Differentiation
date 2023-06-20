@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace Reflection.Differentiation
 {
-
     public static class Algebra
     {
         /// <summary>
