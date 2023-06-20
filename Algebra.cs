@@ -105,5 +105,23 @@ namespace Reflection.Differentiation
             var result = Expression.Lambda<Func<double, double>>(resultBody, expression.Parameters);
             return result;
         }
+
+        static Expression<Func<double, double>> DifferentiateCos(Expression<Func<double, double>> expression)
+        {
+            //der(y = cos(x)) = (y = -sin(x))
+            //der(y = g(f(x))) = der(y = g(f)) * der(y = f(x)) 
+            var body = expression.Body as MethodCallExpression;
+            if (body is null)
+                throw new ArgumentException();
+            var cosParam = body.Arguments[0];
+            var cosParamLambda = Expression.Lambda<Func<double, double>>(cosParam, expression.Parameters);
+            var cosParamDerivative = Differentiate(cosParamLambda);
+            var sinMethodInfo = typeof(Math).GetMethod("Sin", new Type[] {typeof(double) });
+            var sinCall = Expression.Call(sinMethodInfo, cosParam);
+            var negativeSinCall = Expression.Negate(sinCall);
+            var resultBody = Expression.Multiply(negativeSinCall, cosParamDerivative.Body);
+            var result = Expression.Lambda<Func<double, double>>(resultBody, expression.Parameters);
+            return result;
+        }
     }
 }
